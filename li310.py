@@ -9,13 +9,13 @@ import re
 # print(ret.group())
 
 # 点(.)匹配任意字符除了'\n'
-text='abc'
-ret=re.match('.',text)
+text = 'abc'
+ret = re.match('.', text)
 print(ret.group())
 
 # \d匹配任意数字[0-9]
-text='10bc'
-ret=re.match('\d',text)
+text = '10bc'
+ret = re.match('\d', text)
 print(ret.group())
 
 # \D匹配任意非数字
@@ -30,7 +30,7 @@ print(ret.group())
 # print(ret.group())
 # print('='*10)
 
-#\S匹配非空白字符
+# \S匹配非空白字符
 # text='+bc'
 # ret=re.match('\D',text)
 # print(ret.group())
@@ -42,7 +42,7 @@ print(ret.group())
 
 # \W匹配和\w相反
 
-#[]组合的方式，满足括号中某一项都可以匹配
+# []组合的方式，满足括号中某一项都可以匹配
 # text='bc'
 # ret=re.match('[1b]',text)
 # print(ret.group())
@@ -52,7 +52,7 @@ print(ret.group())
 # ret=re.match('[0-9]',text)
 # print(ret.group())
 
-#组合方式实现\D
+# 组合方式实现\D
 # text='bc'
 # ret=re.match('[^0-9]',text) # ^:取反
 # print(ret.group())
@@ -61,4 +61,3 @@ print(ret.group())
 # text='bc'
 # ret=re.match('[a-zA-Z0-9_]',text)
 # print(ret.group())
-

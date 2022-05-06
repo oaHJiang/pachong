@@ -1,7 +1,8 @@
-#搜索文档树
-#find找到第一个满足要求的标签并返回，find_all返回所有满足要求的标签
+# 搜索文档树
+# find找到第一个满足要求的标签并返回，find_all返回所有满足要求的标签
 from bs4 import BeautifulSoup
-html="""
+
+html = """
 <table class="tablelist" celpadding="0" cel1spacing="0">
     <tbody>
         <tr class="h">
@@ -84,57 +85,57 @@ html="""
     </body>
 </table>
 """
-soup=BeautifulSoup(html,'lxml')
-#1.获取第一个tr标签
+soup = BeautifulSoup(html, 'lxml')
+# 1.获取第一个tr标签
 '''
 print(soup.tr)
 print(soup.find('tr'))
 '''
-#2.获取所有tr标签
+# 2.获取所有tr标签
 '''
 trs=soup.find_all('tr')#trs为列表
 for i in trs:
     print(i)
 '''
-#3.获取第二个tr标签
+# 3.获取第二个tr标签
 '''
 tr=soup.find_all('tr',limit=2)[1]
 print(tr)
 '''
-#4.获取所有class等于even的tr标签
-#trs=soup.find_all('tr',class_='even')#注意_,class为Python的关键词，要加下划线
+# 4.获取所有class等于even的tr标签
+# trs=soup.find_all('tr',class_='even')#注意_,class为Python的关键词，要加下划线
 '''
 trs=soup.find_all('tr',attrs={'class':'even'})
 for i in trs:
     print(i)
     print('='*10)
 '''
-#5.将所有id等于test,class等于test的a标签提取出来
+# 5.将所有id等于test,class等于test的a标签提取出来
 '''
 list=soup.find_all('a',id='test',class_='test')
 for i in list:
     print(i)
 '''
-#6.获取所有a标签的href属性
-#alist=soup.find_all('a')
+# 6.获取所有a标签的href属性
+# alist=soup.find_all('a')
 
-#for i in alist:
-    #1.
-    #href=i['href']
-    #print(type(i))#tag型
-    #print(href)
-    #2.
-    #href=i.attrs['href']
-    #print(href)
+# for i in alist:
+# 1.
+# href=i['href']
+# print(type(i))#tag型
+# print(href)
+# 2.
+# href=i.attrs['href']
+# print(href)
 
-#7.获取所有职位信息(文本)
-trs=soup.find_all('tr')[1:]#列表切片
+# 7.获取所有职位信息(文本)
+trs = soup.find_all('tr')[1:]  # 列表切片
 '''
 list=[]
 '''
-   
+
 for tr in trs:
-    infos=list(tr.stripped_strings) 
+    infos = list(tr.stripped_strings)
     print(infos)
 '''
     info={}
@@ -151,12 +152,4 @@ print(list)
     for string in tr.stripped_strings:
         print(string)
         print(type(string))
-   '''  
-    
-   
-
-
-
-
-
-
+   '''

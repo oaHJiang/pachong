@@ -6,21 +6,21 @@ import re
 # text='apple price is $99,orange price is $88'
 # res=re.search('.+(\$\d+).+(\$\d+)',text) #search寻找符合条件的第一个
 # print(res.group(0)) 
-#0匹配整个分组
-#1匹配第一个分组
-#groups()获取所有分组
-#text='apple price is $99,orange price is $88'
-#res=re.search('.+(\$\d+).+(\$\d+)',text) #search寻找符合条件的第一个
-#print(res.group(0)) 
+# 0匹配整个分组
+# 1匹配第一个分组
+# groups()获取所有分组
+# text='apple price is $99,orange price is $88'
+# res=re.search('.+(\$\d+).+(\$\d+)',text) #search寻找符合条件的第一个
+# print(res.group(0))
 
 # findall:查找所有满足条件的,输出列表
-#text='apple price is $99,orange price is $88'
-#res=re.findall('\$\d+',text) #search寻找符合条件的第一个
-#print(res)
+# text='apple price is $99,orange price is $88'
+# res=re.findall('\$\d+',text) #search寻找符合条件的第一个
+# print(res)
 
 # sub:根据规则替换其他字符串
 # text='nihao zhongguo,hello world'
-#res=text.replace(' ','\n') #replace函数
+# res=text.replace(' ','\n') #replace函数
 # res=re.sub(r' |,','\n',text)
 # print(res)
 '''
@@ -50,17 +50,16 @@ print(new_html)
 '''
 
 # split:根据规则分割字符串
-#text='nihao zhongguo,hello world'
-#res=re.split(r' |,',text)
-#print(res)
+# text='nihao zhongguo,hello world'
+# res=re.split(r' |,',text)
+# print(res)
 
 # compile:编译正则表达式
-text='apple price is $34.56'
-r=re.compile(r"""
+text = 'apple price is $34.56'
+r = re.compile(r"""
 \d+ # 整数部分
 \.? # 小数点
 \d+ # 小数部分
-""",re.VERBOSE) #注释在search也可用
-res=re.search(r,text)
+""", re.VERBOSE)  # 注释在search也可用
+res = re.search(r, text)
 print(res.group())
-

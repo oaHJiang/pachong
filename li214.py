@@ -1,11 +1,12 @@
 import requests
+
 '''
 resp=requests.get('https://www.baidu.com/')
 print(resp.cookies)
 print(resp.cookies.get_dict())
 '''
 
-#case1
+# case1
 '''
 url='https://www.zhihu.com/hot'
 header={
@@ -16,22 +17,22 @@ resp=requests.get(url,headers=header)
 print(resp.text)
 '''
 
-#case2
-header={
-    'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.82 Safari/537.36'
+# case2
+header = {
+    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.82 Safari/537.36'
 }
-post_url='https://i.meishi.cc/login_t.php?redirect=https%3A%2F%2Fwww.meishij.net%2F%3Fsession_id%3D23221efc82d454145c4dcbf7ad04da78'
-post_data={
-    'username':'15754519404',
-    'password':'lnxmol22.4'
+post_url = 'https://i.meishi.cc/login_t.php?redirect=https%3A%2F%2Fwww.meishij.net%2F%3Fsession_id%3D23221efc82d454145c4dcbf7ad04da78'
+post_data = {
+    'username': '15754519404',
+    'password': 'lnxmol22.4'
 }
 
-#共享cookie
+# 共享cookie
 
-#登陆
-session=requests.session()#会话对象
-session.post(post_url,headers=header,data=post_data)
-#访问个人网页
-url='https://i.meishi.cc/cook.php?id=15116714'
-resp=session.get(url)
+# 登陆
+session = requests.session()  # 会话对象
+session.post(post_url, headers=header, data=post_data)
+# 访问个人网页
+url = 'https://i.meishi.cc/cook.php?id=15116714'
+resp = session.get(url)
 print(resp.text)

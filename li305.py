@@ -1,6 +1,7 @@
 from turtle import title
 from bs4 import BeautifulSoup
-html=""" 
+
+html = """ 
 <html><head><title>The Dormouse's story </title ></head>
 <body>
 <p class="title" name ="dromouse">The Dormouse's story</p>
@@ -12,7 +13,7 @@ and they lived at the bottom of a well.</p>
 <p class ="story">...</p>
 <b><!--Hey, buddy. Want to buy a used parser?--></b>
 """
-soup=BeautifulSoup(html,'lxml')
+soup = BeautifulSoup(html, 'lxml')
 '''
 print(soup.p)#Tag对象,查找第一个符合要求的标签
 print(soup.p.name)#标签名
@@ -23,6 +24,6 @@ print(soup.p.get('class'))#属性值
 soup.p['class']='new'#更改属性
 print(soup.p)
 '''
-print(soup.p.string)#navigable.string类型
+print(soup.p.string)  # navigable.string类型
 
-print(soup.b.string)#comment类型，特殊的navigable.string对象
+print(soup.b.string)  # comment类型，特殊的navigable.string对象

@@ -1,6 +1,7 @@
-#数据解析
+# 数据解析
 from lxml import etree
-text='''
+
+text = '''
 <div>
     <ul>
          <li class="item-0"><a href ="link1.html">first item</a></li>
@@ -20,7 +21,7 @@ print(html)
 result=etree.tostring(html).decode('utf-8')
 print(result)
 '''
-#读取
-html=etree.parse('hello.html')
-result=etree.tostring(html).decode('utf-8')
+# 读取
+html = etree.parse('hello.html')
+result = etree.tostring(html).decode('utf-8')
 print(result)

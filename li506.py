@@ -15,13 +15,15 @@ import random
 from queue import Queue
 import time
 import threading
+
+
 # q=Queue(4)
 # for x in range(5):
 #     try:
 #         q.put(x,block=False) #非阻塞
 #     except:
 #         break
-    
+
 # # print(q.qsize())
 
 # if q.full:
@@ -41,20 +43,23 @@ import threading
 
 def add_value(q):
     while True:
-        q.put(random.randint(0,10))
+        q.put(random.randint(0, 10))
         time.sleep(1)
+
 
 def get_value(q):
     while True:
-        print('获取到的值:%d'%q.get())
+        print('获取到的值:%d' % q.get())
+
 
 def main():
-    q=Queue(10)
-    th1=threading.Thread(target=add_value,args=[q])
-    th2=threading.Thread(target=get_value,args=[q])
+    q = Queue(10)
+    th1 = threading.Thread(target=add_value, args=[q])
+    th2 = threading.Thread(target=get_value, args=[q])
 
     th1.start()
     th2.start()
 
-if __name__=='__main__':
+
+if __name__ == '__main__':
     main()

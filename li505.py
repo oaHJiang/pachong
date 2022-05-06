@@ -13,52 +13,58 @@
 import threading
 import random
 import time
-gMoney=0
-gCondition=threading.Condition()
-gTimes=0
+
+gMoney = 0
+gCondition = threading.Condition()
+gTimes = 0
+
+
 class Producer(threading.Thread):
-    def run(self) -> None: # ->提示函数返回None
+    def run(self) -> None:  # ->提示函数返回None
         global gMoney
         global gTimes
         while True:
             gCondition.acquire()
-            if gTimes>=10:
+            if gTimes >= 10:
                 gCondition.release()
                 break
-            money=random.randint(0,100)
-            gMoney+=money
-            gTimes+=1
-            print('%s生产了%d元钱，剩余%d元钱'%(threading.current_thread().name,money,gMoney))
+            money = random.randint(0, 100)
+            gMoney += money
+            gTimes += 1
+            print('%s生产了%d元钱，剩余%d元钱' % (threading.current_thread().name, money, gMoney))
             gCondition.notify_all()
             gCondition.release()
             time.sleep(1)
 
+
 class Consumer(threading.Thread):
-    def run(self) -> None: 
+    def run(self) -> None:
         global gMoney
         while True:
             gCondition.acquire()
-            money=random.randint(0,100)
-            while gMoney<money:
-                if gTimes>=10:
-                    print('%s消费者想消费%d元钱，但余额只有%d元钱，且生产者不再生产'%(threading.current_thread().name,money,gMoney))
+            money = random.randint(0, 100)
+            while gMoney < money:
+                if gTimes >= 10:
+                    print('%s消费者想消费%d元钱，但余额只有%d元钱，且生产者不再生产' % (threading.current_thread().name, money, gMoney))
                     gCondition.release()
-                    return # 退出所有循环
-                print('%s消费者想消费%d元钱，但余额只有%d元钱'%(threading.current_thread().name,money,gMoney))    
+                    return  # 退出所有循环
+                print('%s消费者想消费%d元钱，但余额只有%d元钱' % (threading.current_thread().name, money, gMoney))
                 gCondition.wait()
-            gMoney-=money
-            print('%s消费了%d元钱，剩余%d元钱'%(threading.current_thread().name,money,gMoney))
+            gMoney -= money
+            print('%s消费了%d元钱，剩余%d元钱' % (threading.current_thread().name, money, gMoney))
             gCondition.release()
             time.sleep(1)
 
+
 def main():
     for x in range(5):
-        th=Producer(name='生产者%d号'%x)
+        th = Producer(name='生产者%d号' % x)
         th.start()
 
     for x in range(5):
-        th=Consumer(name='消费者%d号'%x)
+        th = Consumer(name='消费者%d号' % x)
         th.start()
 
-if __name__=='__main__':
+
+if __name__ == '__main__':
     main()

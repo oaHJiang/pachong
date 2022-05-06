@@ -5,22 +5,25 @@
 from multiprocessing import Lock
 import threading
 
-value=0
-gLock=threading.Lock() #把尽量少和不耗时的代码放到锁中执行
+value = 0
+gLock = threading.Lock()  # 把尽量少和不耗时的代码放到锁中执行
+
 
 def add_value():
-    #如果在函数中修改全局变量，需要使用global关键字进行声明
+    # 如果在函数中修改全局变量，需要使用global关键字进行声明
     global value
-    gLock.acquire() #上锁
+    gLock.acquire()  # 上锁
     for x in range(1000000):
-        value+=1
+        value += 1
     gLock.release()
-    print('value的值是：%d'%value)
+    print('value的值是：%d' % value)
+
 
 def main():
     for x in range(2):
-        th=threading.Thread(target=add_value)
+        th = threading.Thread(target=add_value)
         th.start()
 
-if __name__=='__main__':
+
+if __name__ == '__main__':
     main()
